@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helm-test-nginx
+spec:
+  selector:
+    matchLabels:
+      app: helm-test-nginx
+  template:
+    metadata:
+      labels:
+        app: helm-test-nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        resources:
+          limits:
+            memory: "32Mi"
+            cpu: "50m"
+        ports:
+        - containerPort: 80
